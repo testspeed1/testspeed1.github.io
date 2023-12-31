@@ -1,9 +1,663 @@
-<html>
-    <head>
-        <title>Hello</title>
-    </head>
-    
-    <body>
-        <h1>Hello World!</h1>
-    </body>
+<!DOCTYPE html>
+<html lang="zh" class="js">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>测速面板 - 网速测试,刷流量,流量消耗,定向流量消耗,在线测速,宽带测速,专业测网速</title>
+  <meta name="keywords"
+    content="测速,测网速,网速,刷流量,流量消耗定，向流量消耗，电信定向流量消耗，移动定向流量消耗，联通定向流量消耗,广电定向流量消耗,网络质量,5G网速,5G测速,5G网络,在线测速,网速测试,宽带测速,视频测试,Wi-Fi测速,联通,电信,移动,广电,上网速度,速度测试,宽带测试,千兆宽带,全屋Wi-Fi,双千兆,三千兆,光纤,ping,speedtest,speed,test,adsl,ftth,iot,internet,tracert,traceroute,IPv6,Wi-Fi 6,6G,网维助手">
+  <meta name="description"
+    content="测速面板（TestSpeed.cc）提供网速测试，刷流量,流量消耗，定向流量消耗，电信定向流量消耗，移动定向流量消耗，联通定向流量消耗，广电定向流量消耗，网络质量测试，宽带测速，Wi-Fi测速，5G测速，IPv6测速，专网测速等专业服务。">
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <link rel="stylesheet" href="./res/dashlite.css">
+  <link rel="stylesheet" href="./res/style.css">
+  <link href="./res/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="icon" href="res/logo.png" type="image/png">
+  <link rel="stylesheet" href="./res/layer.css" id="layuicss-layer">
+  <script src='./res/jquery.min.js'></script>
+  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+  <script>LA.init({ id: "3GYbtNVmVfBuPRip", ck: "3GYbtNVmVfBuPRip" })</script>
+
+  <script>
+
+    function GetVal(obj) {
+
+      //代表的是选中项的index索引
+      var index = obj.selectedIndex;
+      //代表的是选中项的的值
+      var val = obj.options[index].value;
+      //代表的是选中项的text
+      var txt = obj.options[index].text;
+      // console.log(index);
+      // console.log(val);
+      // console.log(txt);
+      document.getElementById('link').value = obj.options[obj.selectedIndex].value; setCookie('select', obj.selectedIndex, 365);
+      if (index == 0) {
+        // console.log("自定义")
+        document.getElementById("link").type = "text"
+      } else {
+        // console.log("222")
+        document.getElementById("link").type = "hidden"
+      }
+
+
+    }
+
+    // var num = 0;
+    // numCount()
+    // function numCount() {
+    //   num = num + 1;
+    //   // console.log(num);
+    //   setTimeout("numCount()", 1000);
+    // }
+
+  </script>
+
+</head>
+
+<body class="nk-body npc-invest bg-lighter no-touch nk-nio-theme" id="bodybjs">
+  <!-- wrap @s -->
+  <div class="nk-wrap ">
+    <!-- main header @s -->
+    <div class="nk-header nk-header-fluid nk-header-fixed is-light" id="yejbox">
+      <div class="container-xl">
+        <div class="nk-header-wrap link-between">
+          <div class="nk-header-brand">
+            <a href="javascript:;" class="logo-link text-base" id="yjbt"><img src="res/logo.png"
+                class="hide-mb-sm">测速面板</a>
+          </div>
+          <!-- .nk-header-brand -->
+          <div class="nk-header-tools nk-header-menu" data-content="headerNav">
+            <!-- Menu -->
+            <ul class="nk-menu nk-menu-main">
+              <li class="nk-menu-item ">
+                <a href="../" class="nk-menu-link nk-ibx-action-item" data-original-title="" title="" id="yjbt1">
+                  <em class="icon ni ni-home"></em>
+                  <span class="nk-menu-text">首页</span>
+                </a>
+              </li>
+              <!-- <li class="nk-menu-item ">
+                                <a href="/" class="nk-menu-link nk-ibx-action-item">
+                                    <em class="icon ni ni-policy"></em>
+                                    <span class="nk-menu-text">IP归属查询</span>
+                                </a>
+                            </li>
+                            <li class="nk-menu-item ">
+                                <a href="/" class="nk-menu-link nk-ibx-action-item">
+                                    <em class="icon ni ni-dropbox"></em>
+                                    <span class="nk-menu-text">免费图床</span>
+                                </a>
+                            </li>
+                            <li class="nk-menu-item ">
+                                <a href="#" class="nk-menu-link nk-ibx-action-item">
+                                    <em class="icon ni ni-heart"></em>
+                                    <span class="nk-menu-text">占位占位</span>
+                                </a>
+                            </li>
+                            <li class="nk-menu-item ">
+                                <a href="/" class="nk-menu-link nk-ibx-action-item">
+                                    <em class="icon ni ni-comments"></em>
+                                    <span class="nk-menu-text">留言反馈</span>
+                                </a>
+                            </li> -->
+            </ul>
+          </div>
+          <!-- .nk-header-tools -->
+        </div>
+        <!-- .nk-header-wrap -->
+      </div>
+      <!-- .container-fliud -->
+    </div>
+    <!-- main header @e -->
+    <!-- content @s -->
+    <div class="nk-content nk-content-lg nk-content-fluid">
+
+      <style>
+        .stat {
+          width: 100%;
+          column-gap: 1rem;
+          padding: 1rem 1rem;
+        }
+
+        .stat-title {
+          white-space: nowrap;
+          opacity: .6;
+        }
+
+        .stat-value {
+          white-space: nowrap;
+          grid-column-start: 1;
+          font-size: 1.8rem;
+          font-weight: 700;
+          line-height: 2.5rem
+        }
+
+
+        .nav {
+          list-style: none;
+          text-align: center;
+          display: table;
+          margin: 0 auto;
+        }
+
+        .nav li {
+          position: relative;
+          display: inline-block;
+          margin-right: -4px;
+        }
+
+        .nav li:before {
+          content: "";
+          display: block;
+          border-top: 1px solid #ddd;
+          border-bottom: 1px solid #fff;
+          width: 100%;
+          height: 1px;
+          position: absolute;
+          top: 50%;
+          z-index: -1;
+        }
+
+
+        /* .nav a:link,
+        .nav a:visited {
+          display: block;
+          text-decoration: none;
+          background-color: #485bed;
+          background-image: radial-gradient(circle, #93e9ff, #17aeeb, #00588c);
+
+          color: #ffffff;
+          font-size: 30px;
+          font-weight: 700 !important;
+          margin: 36px;
+          width: 144px;
+          height: 144px;
+          position: relative;
+          text-align: center;
+          border-radius: 50%;
+          border: solid 4px #ffffff4d;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+        } */
+
+
+        .nav a:link,
+        .nav a:visited {
+          display: block;
+          text-decoration: none;
+          background-color: #485bed;
+          background-image: -webkit-linear-gradient(145deg, #485bed, #6576ff);
+          color: #ffffff;
+          font-size: 30px;
+          font-weight: 700 !important;
+          margin: 36px;
+          width: 144px;
+          height: 144px;
+          position: relative;
+          text-align: center;
+          /* line-height: 144px; */
+          border-radius: 50%;
+          box-shadow: 0px 3px 8px #485bed, inset 0px 2px 3px #6576ff;
+          border: solid 1px transparent;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+
+
+
+        .nav a:before {
+          content: "";
+          display: block;
+          background: #fff;
+          border-top: 2px solid #ddd;
+          position: absolute;
+          top: -18px;
+          left: -18px;
+          bottom: -18px;
+          right: -18px;
+          z-index: -1;
+          border-radius: 50%;
+          box-shadow: inset 0px 8px 48px #ddd;
+        }
+
+        .nav a:active {
+          box-shadow: none;
+          border: solid 1px #a7a7a7;
+        }
+
+        .nav a:hover {
+          text-decoration: none;
+          color: #ffffff;
+          background: #6576ff;
+        }
+      </style>
+      <div id="app" class="container-xl">
+        <div class="col-sm-12 col-md-10 col-xl-8 center-block">
+          <div class="card card-preview" id="yjzt">
+            <div class="card-inner mt-3">
+              <!-- <div class="nya-title nk-ibx-action-item progress-rating"><span
+                  class="nk-menu-text font-weight-bold">在线测速</span></div> -->
+              <div class="form-group"><label class="form-label" id="yjxbt">测速地址：</label>
+                <div class="form-control-wrap">
+                  <select id='select' onchange="GetVal(this)" type="text" class="form-control">
+                    <option value="" id="diy">自定义</option>
+                    <option selected="selected"
+                      value="https://wppkg.baidupcs.com/issue/netdisk/apk/BaiduNetdisk_10.1.02.apk">
+                      百度CDN</option>
+
+                    <option
+                      value="https://img.alicdn.com/imgextra/i1/O1CN01xA4P9S1JsW2WEg0e1_!!6000000001084-2-tps-2880-560.png">
+                      阿里CDN</option>
+                    <option value="https://game.gtimg.cn/images/nz/web202106/index/bc_part1.gif?0.3190485611376561">
+                      腾讯CDN</option>
+                    <option
+                      value="https://d.musicapp.migu.cn/upload/fbpt_rsync_apps/local/signed/MobileMusic7350/MobileMusic7350_014000D.apk">
+                      咪咕音乐</option>
+                    <option value="https://img.mcloud.139.com/material_prod/material_media/20221128/1669626861087.png">
+                      和彩云</option>
+                    <option
+                      value="https://cloudphoneh5.buy.139.com/cloudimage/app/CP_V3.2.0.202307200940_3c4c9156_cp1215Release_protected_signed.apk">
+                      移动云手机</option>
+                    <option value="https://vod-origin-rjzy.gdoss.xstore.ctyun.cn/07da9eb52ad948c7b58b760003c0006b.mp4">
+                      天翼云</option>
+                    <option value="https://lf9-cdn-tos.bytecdntp.com/cdn/yuntu-index/1.0.4/case/maiteng/detailbg.png">
+                      字节跳动</option>
+                    <option
+                      value="https://img10.360buyimg.com/live/jfs/t1/128947/12/26918/1361527/6260e71bE0ee85af5/ecaa17ea8dd3dddb.jpg">
+                      京东</option>
+                    <option value="https://pic-bucket.ws.126.net/photo/0003/2022-04-24/H5N2082C00AJ0003NOS.jpg">网易
+                    </option>
+                    <option
+                      value="https://wwwstatic.vivo.com.cn/vivoportal/files/resource/funtouch/1651200648928/images/os2-jude-video.mp4">
+                      Vivo</option>
+
+                  </select>
+
+                  <input value=""
+                    oninput="document.getElementById('select').selectedIndex=0;document.getElementById('diy').value=this.value;setCookie('diy',this.value,365);setCookie('select',0,365);"
+                    type="hidden" id="link" placeholder="请输入下载链接" autocomplete="off" class="form-control">
+
+                </div>
+              </div>
+
+
+              <div class="form-group"><label class="form-label" id="yjxbt1">线程数：<input id='thread' readonly="readonly"
+                    value=1></label>
+
+                <!-- <div class="form-group"><label class="form-label">线程数： <label for="range" id="thread">0</label></label> -->
+                <div class="form-control-wrap number-spinner-wrap">
+
+                  <!-- <button
+                    onclick="var thread=document.getElementById('thread');if(thread.value!=thread.min)thread.value--;"
+                    class="btn btn-icon btn-outline-primary number-spinner-btn number-minus"><em
+                      class="icon ni ni-minus"></em></button>
+
+                  <input
+                    onchange="var self= document.getElementById('thread');if(self.value<self.min)self.value=self.min;if(self.value>self.max)self.value=self.max"
+                    
+                    id='thread' type="number" min="1" max="999" value=1 class="form-control number-spinner">
+
+                  <button
+                    onclick="var thread=document.getElementById('thread');if(thread.value!=thread.max)thread.value++;"
+                    class="btn btn-icon btn-outline-primary number-spinner-btn number-plus"><em
+                      class="icon ni ni-plus"></em></button> -->
+
+
+                  <!-- <label for="range" id="thread1">0</label> -->
+
+                  <input type="range" id="range" name="range" value="1" min="1" max="64"
+                    onmousemove="handleMouseMove(this.value)" onchange="handleMouseMove(this.value)" />
+
+
+
+
+                </div>
+              </div>
+
+
+              <div class="form-group" id="back">
+                <div class="preview-block">
+                  <div class="custom-control custom-switch checked"><input onclick="musiccontrol(this)" type="checkbox"
+                      id="customSwitch2" class="custom-control-input"> <label for="customSwitch2"
+                      class="custom-control-label" id="yjxbt2">保持后台运行</label>
+                  </div>
+                  <div class="custom-control custom-switch checked" style="float: right;"><input
+                      onclick="musiccontrol3()" type="checkbox" id="customSwitch3" class="custom-control-input"> <label
+                      for="customSwitch3" class="custom-control-label" id="yjxbt3">切换主题</label>
+                  </div>
+
+                </div>
+
+              </div>
+
+
+
+
+
+              <!-- <button onclick="botton_clicked();" type="button" id="do"
+                class="btn btn-dim btn-outline-secondary btn-block card-link">
+                开始
+              </button> -->
+
+
+              <div class="row mt-4" id="yjzt3">
+                <div id="yjbkz2" class="col-sm-12 col-md-4 border stat"
+                  onclick='inputMax=prompt("请输入流量上限(GB)\n不填为不设置上限","");if(inputMax !== null)setMax(inputMax)'>
+                  <div id="yjtu" class="text-dark"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                      viewBox="0 0 24 24" stroke="currentColor" class="h-15 w-15 float-right pt-3">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z">
+                      </path>
+                    </svg></div>
+                  <div class="stat-title">总流量<a id="showMax"></a><img src="./res/sr.png" width="20px" height="20px"
+                      style="margin-bottom: 5px; margin-left: 5px;"></div>
+                  <div class="stat-value" id="total">-</div>
+
+                </div>
+                <div class="col-sm-12 col-md-4 border stat" id="yjbkz">
+                  <div id="yjtu1" class="text-info"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                      viewBox="0 0 24 24" stroke="currentColor" class="h-15 w-15 float-right pt-3">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                        d="M16.469,8.924l-2.414,2.413c-0.156,0.156-0.408,0.156-0.564,0c-0.156-0.155-0.156-0.408,0-0.563l2.414-2.414c1.175-1.175,1.175-3.087,0-4.262c-0.57-0.569-1.326-0.883-2.132-0.883s-1.562,0.313-2.132,0.883L9.227,6.511c-1.175,1.175-1.175,3.087,0,4.263c0.288,0.288,0.624,0.511,0.997,0.662c0.204,0.083,0.303,0.315,0.22,0.52c-0.171,0.422-0.643,0.17-0.52,0.22c-0.473-0.191-0.898-0.474-1.262-0.838c-1.487-1.485-1.487-3.904,0-5.391l2.414-2.413c0.72-0.72,1.678-1.117,2.696-1.117s1.976,0.396,2.696,1.117C17.955,5.02,17.955,7.438,16.469,8.924 M10.076,7.825c-0.205-0.083-0.437,0.016-0.52,0.22c-0.083,0.205,0.016,0.437,0.22,0.52c0.374,0.151,0.709,0.374,0.997,0.662c1.176,1.176,1.176,3.088,0,4.263l-2.414,2.413c-0.569,0.569-1.326,0.883-2.131,0.883s-1.562-0.313-2.132-0.883c-1.175-1.175-1.175-3.087,0-4.262L6.51,9.227c0.156-0.155,0.156-0.408,0-0.564c-0.156-0.156-0.408-0.156-0.564,0l-2.414,2.414c-1.487,1.485-1.487,3.904,0,5.391c0.72,0.72,1.678,1.116,2.696,1.116s1.976-0.396,2.696-1.116l2.414-2.413c1.487-1.486,1.487-3.905,0-5.392C10.974,8.298,10.55,8.017,10.076,7.825">
+                      </path>
+                    </svg></div>
+                  <div class="stat-title" id="describe">实时速度</div>
+                  <div class="stat-value text-info" id="speed">-</div>
+                </div>
+                <div class="col-sm-12 col-md-4 border stat" id="yjbkz1">
+                  <div id="yjtu2" class="text-dark"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                      viewBox="0 0 24 24" stroke="currentColor" class="h-15 w-15 float-right pt-3">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg></div>
+                  <div class="stat-title">带宽</div>
+                  <div class="stat-value" id="mbps">-</div>
+                </div>
+              </div>
+
+              <nav>
+                <ul class="nav">
+                  <li>
+                    <a href="javascript:;" onclick="botton_clicked();" id="do">
+                      <!-- <div class="fa fa-spinner fa-pulse fa-2x"></div> -->
+                      <div id="kzimg" class="fa fa fa-play fa-2x"></div>
+                      <!-- <div class="fa fa-pause fa-2x"></div> -->
+                      <!-- <img  id="kzimg" src="./bf.png" alt="" style="width: 60px;margin-left: 5px;margin-right: 0px;"> -->
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+
+
+
+            </div>
+          </div>
+          <div class="card card-preview" id="yjzt1">
+            <div class="card-inner" style="padding: 0px;">
+              <!-- <h6><em class="icon ni ni-info"></em>出口地址</h6> -->
+              <div class="accordion-inner" style="text-align:center;" id="yjzt1_1">
+                <li class="nk-menu-item ">
+                  <a class="text-waring" style="pointer-events:none;" id="ipcn">Loading...</a>
+                </li>
+                <li class="nk-menu-item ">
+                  <a class="text-waring" style="pointer-events:none;" id="ipcn2">Loading...</a>
+                </li>
+                <li class="nk-menu-item ">
+                  <a class="text-waring" style="pointer-events:none;" id="laycn">-ms</a>
+                </li>
+                <!-- <li class="nk-menu-item ">
+                  <a style="pointer-events:none;" id="ipgb">Loading...</a>
+                  <a style="pointer-events:none;float: right;" id="laygb">-ms</a>
+                </li> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- content @d -->
+    <div class="nk-footer nk-footer-fluid bg-lighter" id="yjzt2">
+      <div class="container-xl">
+        <div class="nk-footer-wrap">
+          <div class="nk-footer-copyright"> © 2023 <a href="http://testspeed.cc/">测速面板</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer @e -->
+  </div>
+  <!-- wrap @e -->
+  <audio controls id="music" autoplay loop utoplay muted style="display:none">
+    <source src="res/background.mp3" type="audio/mpeg">
+  </audio>
+
+
+  <script>
+
+
+
+    // document.addEventListener('visibilitychange', function () {
+    //   if (document.visibilityState === 'visible') {
+    //     // 重新播放音乐的代码
+    //     document.getElementById("music").play()
+    //     console.log("前台")
+    //   } else {
+    //     document.getElementById("music").play()
+    //     // 暂停音乐或记录播放状态
+    //     console.log("后台")
+    //   }
+    // });
+
+
+
+    // 禁用双击放大(防止按加减按钮误触)
+    var lastTouchEnd = 0
+    if (!!('ontouchstart' in window || navigator.maxTouchPoints)) {
+      document.documentElement.addEventListener(
+        'touchend',
+        function (event) {
+          var now = Date.now()
+          if (now - lastTouchEnd <= 300) {
+            event.preventDefault()
+          }
+          lastTouchEnd = now
+        },
+        {
+          passive: false
+        }
+      )
+    }
+
+    function show(num, des, flo) {
+      var cnum = num;
+      var total_index = 0;
+      while (cnum >= 1024) {
+        if (total_index == des.length - 1) break;
+        cnum = cnum / 1024;
+        total_index++;
+      }
+      return cnum.toFixed(flo[total_index]) + des[total_index];
+    }
+
+
+    function musiccontrol(botton) {
+
+      if (document.getElementById("customSwitch2").checked) {
+
+        // document.getElementById("music").play()
+        if (document.visibilityState === 'visible') {
+          // 重新播放音乐的代码
+          // document.getElementById("music").play()
+          console.log("前台")
+        } else {
+          document.getElementById("music").play()
+          // 暂停音乐或记录播放状态
+          console.log("后台")
+        }
+
+
+        console.log("打开成功")
+      } else {
+        // document.getElementById("music").pause()
+        console.log("关闭成功")
+      }
+
+      // if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+
+      // }
+
+
+    }
+
+    function musiccontrol3() {
+
+      if (document.getElementById("customSwitch3").checked) {
+        console.log("打开成功")
+
+        document.body.style.backgroundColor = "#f0f8ff";
+        document.getElementById("yejbox").style.background = "#ffffff";
+        document.getElementById("yjbt").style.color = "#526484";
+
+        document.getElementById("yjbt1").style.color = "#526484";
+        document.getElementById("yjzt").style.background = "#ffffff";
+        document.getElementById("yjzt1").style.background = "#ffffff";
+        document.getElementById("yjzt2").style.background = "#ffffff";
+        document.getElementById("yjxbt").style.color = "#526484";
+        document.getElementById("yjxbt1").style.color = "#526484";
+        document.getElementById("yjxbt2").style.color = "#526484";
+        document.getElementById("yjxbt3").style.color = "#526484";
+
+        document.getElementById("select").style.background = "#ffffff";
+        document.getElementById("select").style.color = "#526484";
+        document.getElementById("yjzt3").style.color = "#526484";
+        document.getElementById("speed").style.color = "#526484";
+
+        document.getElementById("yjtu").style.color = "#526484";
+        document.getElementById("yjtu1").style.color = "#526484";
+        document.getElementById("yjtu2").style.color = "#526484";
+        document.getElementById("yjzt1_1").style.color = "#526484";
+        document.getElementById("yjzt2").style.borderTop = "1px solid #dbdbdb"
+        document.getElementById("select").style.border = "1px solid #dbdbdb"
+        document.getElementById("yjzt3").style.border = "1px solid #dbdbdb"
+        // document.getElementById("yjbkz").style.borderRight = "1px solid #dbdbdb"
+        // document.getElementById("yjbkz").style.borderLeft = "1px solid #dbdbdb"
+        document.getElementById("yjbkz").style.border = "1px solid #dbdbdb"
+        document.getElementById("yjbkz1").style.border = "1px solid #dbdbdb"
+        document.getElementById("yjbkz2").style.border = "1px solid #dbdbdb"
+        document.getElementById("thread").style.color = "#526484";
+
+
+        document.getElementById("link").style.background = "#ffffff";
+        document.getElementById("link").style.color = "#526484";
+        document.getElementById("link").style.border = "1px solid #dbdbdb"
+    //     background: rgb(255, 255, 255);
+    // color: rgb(82, 100, 132);
+    // border: 1px solid rgb(219, 219, 219);
+
+
+        // var i = document.getElementById("yejbox").background = '#6a1a1a !important';
+        // console.log(i)
+
+      }
+      else {
+
+
+        document.body.style.backgroundColor = "#1d2133";
+        document.getElementById("yejbox").style.background = "#1d2133";
+        document.getElementById("yjbt").style.color = "#ffffff";
+        document.getElementById("yjbt1").style.color = "#ffffff";
+        document.getElementById("yjzt").style.background = "#2a2b43";
+        document.getElementById("yjzt1").style.background = "#2a2b43";
+        document.getElementById("yjzt2").style.background = "#2a2b43";
+        document.getElementById("yjxbt").style.color = "#ffffff";
+        document.getElementById("yjxbt1").style.color = "#ffffff";
+        document.getElementById("yjxbt2").style.color = "#ffffff";
+        document.getElementById("yjxbt3").style.color = "#ffffff";
+
+        document.getElementById("link").style.background = "#1d2133";
+        document.getElementById("link").style.color = "#ffffff";
+        document.getElementById("link").style.border = "1px solid #444444"
+
+        document.getElementById("select").style.background = "#1d2133";
+        document.getElementById("select").style.color = "#ffffff";
+        document.getElementById("yjzt3").style.color = "#ffffff";
+        document.getElementById("speed").style.color = "#ffffff";
+        document.getElementById("yjtu").style.color = "#ffffff";
+        document.getElementById("yjtu1").style.color = "#ffffff";
+        document.getElementById("yjtu2").style.color = "#ffffff";
+        document.getElementById("yjzt1_1").style.color = "#ffffff";
+        document.getElementById("yjzt2").style.borderTop = "1px solid #444444"
+        document.getElementById("select").style.border = "1px solid #444444"
+        document.getElementById("yjzt3").style.border = "1px solid #656565"
+        // document.getElementById("yjbkz").style.borderRight = "1px solid #656565"
+        // document.getElementById("yjbkz").style.borderLeft = "1px solid #656565"
+        document.getElementById("yjbkz").style.border = "1px solid #656565"
+        document.getElementById("yjbkz1").style.border = "1px solid #656565"
+        document.getElementById("yjbkz2").style.border = "1px solid #656565"
+        document.getElementById("thread").style.color = "#ffffff";
+        console.log("关闭成功");
+
+      }
+
+    }
+
+    document.getElementById("music").addEventListener("pause", function () {
+      document.title = '测速面板'
+      if (run && !visibl) botton_clicked()
+      document.getElementById("customSwitch2").checked = false
+    })
+    document.getElementById("music").addEventListener("play", function () {
+      if (!(run || visibl)) botton_clicked()
+      document.getElementById("customSwitch2").checked = true
+    })
+    function setCookie(cname, cvalue, exdays) {
+      var d = new Date();
+      d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+      var expires = "expires=" + d.toGMTString();
+      document.cookie = cname + "=" + cvalue + "; " + expires;
+    }
+    function getCookie(cname) {
+      var name = cname + "=";
+      var ca = document.cookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i].trim();
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+      }
+      return "";
+    }
+    document.getElementById('diy').value = getCookie("diy");
+    if (getCookie("select")) document.getElementById('select').selectedIndex = getCookie("select");
+    var selector = document.getElementById("select");
+    document.getElementById('link').value = selector.options[selector.selectedIndex].value;
+
+
+    var Maximum = 0
+    setMax(getCookie('Max'))
+
+    function setMax(inputMax) {
+      if (inputMax > 0) {
+        setCookie("Max", inputMax, 365)
+        Maximum = inputMax * 1073741824
+        document.getElementById("showMax").innerText = "\u00A0\u00A0/\u00A0\u00A0" + show(Maximum, ['B', 'KB', 'MB', 'GB', 'TB', 'PB'], [0, 0, 1, 2, 2, 2])
+      } else {
+        Maximum = 0
+        document.getElementById("showMax").innerText = "\u00A0\u00A0/\u00A0\u00A0∞"
+        setCookie("Max", 0, 365)
+      }
+    }
+  </script>
+
+
+
+  <!-- <div style="display: none">
+<script type="text/javascript" src="https://js.users.51.la/21354177.js"></script>
+    </div> -->
+</body>
+<script src='main.js'></script>
+
 </html>
